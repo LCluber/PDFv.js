@@ -1,0 +1,42 @@
+{
+  "title": "PDFv.js",
+  "menu" : {
+    "menu"          : "Menu",
+    "home"          : "Home",
+    "about"         : "About",
+    "example"       : "Example",
+    "code"          : "Code",
+    "download"      : "Download",
+    "documentation" : "Documentation",
+    "contact"       : "Contact"
+  },
+  "section" : {
+    "home" : {
+      "h1" : "PDFv.js",
+      "description" : "An open source pdf viewer written in TypeScript."
+    },
+    "about" : {
+      "h2" : "About",
+      "text" : "<p>The goal of this library is to provide an easy way to display pdf documents in the browser.</p><p> You can help develop PDFv.js on <a href=\"https://github.com/LCluber/PDFv.js\" target=\"_blank\">Github</a>.</p>"
+    },
+    "code" : {
+      "h2" : "Code",
+      "h3" : "Javascript (main.js)",
+      "p1" : "Instantiate a Keyboard class and creates input listeners."
+    },
+    "download" : {
+      "h2" : "Download PDFv.js",
+      "min" : "Standalone IIFE",
+      "npm" : "Install with ",
+      "zip" : "PDFvjs.zip",
+      "github" : "Clone from Github "
+    },
+    "contact" : {
+      "h2" : "Contact me",
+      "description" : "Feel free to ask me about my work, give me suggestions, or just to say hi.",
+      "website" : "lcluber.com"
+    }
+  },
+  "github":" Github",
+  "twitter":"Twitter"
+}
