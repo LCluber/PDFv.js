@@ -17,6 +17,8 @@ Or download it **[here](http://pdfvjs.lcluber.com/#download)**.
 
 ### ES6
 
+*Include node-modules/@lcluber/pdfvjs/dist/pdf.min.js before PDFv.js ES6 module when you create your bundle for the web.*
+
 ```html
 <canvas id="pdfViewer"></canvas>
 ```

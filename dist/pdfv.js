@@ -25,7 +25,7 @@
 
 import { Logger } from '@lcluber/mouettejs';
 
-let pdfjsLib = require("pdfjs-dist");
+
 class Viewer {
     static display(documentPath, canvasId) {
         pdfjsLib.getDocument(documentPath).then(function (pdf) {

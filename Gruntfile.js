@@ -277,21 +277,35 @@ module.exports = function(grunt){
       }
     },
     concat:{
-      es6: {
+      pdfjs: {
         options: {
           separator: '',
           stripBanners: false
         },
         src: [
-          nodeDir + 'pdfjs-dist/build/pdf.worker.js',
-          nodeDir + 'pdfjs-dist/build/pdf.js',
-          distDir + projectNameLC + '.js'
+          nodeDir + 'pdfjs-dist/build/pdf.worker.min.js',
+          nodeDir + 'pdfjs-dist/build/pdf.min.js',
         ],
-        dest: distDir + projectNameLC + '.js'
+        dest: distDir + 'pdf.min.js'
       },
+      // es6: {
+      //   options: {
+      //     separator: '\n',
+      //     stripBanners: {
+      //       block : true,
+      //       line : true
+      //     }
+      //   },
+      //   src: [
+      //     nodeDir + 'pdfjs-dist/build/pdf.worker.js',
+      //     nodeDir + 'pdfjs-dist/build/pdf.js',
+      //     distDir + projectNameLC + '.js'
+      //   ],
+      //   dest: distDir + projectNameLC + '.js'
+      // },
       iife: {
         options: {
-          separator: '',
+          separator: '\n',
           stripBanners: false
         },
         src: [
@@ -307,8 +321,7 @@ module.exports = function(grunt){
           stripBanners: false
         },
         src: [
-          nodeDir + 'pdfjs-dist/build/pdf.worker.min.js',
-          nodeDir + 'pdfjs-dist/build/pdf.min.js',
+          distDir + 'pdf.min.js',
           distDir + projectNameLC + '.iife.min.js'
         ],
         dest: distDir + projectNameLC + '.iife.min.js'
@@ -357,7 +370,7 @@ module.exports = function(grunt){
                     // /import.*';/g,
                     /export { .* } from '.*';/g,
                     // /\/\/\/ <reference path=.*\/>/g
-                    /var .* = require(.*);/g
+                    /(let|var) .* = require(.*);/g
                   ]
       },
       declaration: {
@@ -453,8 +466,9 @@ module.exports = function(grunt){
                         //lib es6
                         'ts:es6',
                         'rollup:es6',
-                        //'strip_code:es6',
+                        'strip_code:es6',
                         //'concat:es6',
+                        'concat:pdfjs',
                         //lib es5
                         //'ts:es5',
                         'rollup:iife',

@@ -47054,7 +47054,8 @@ exports.MessageHandler = MessageHandler;
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=pdf.worker.js.map/**
+//# sourceMappingURL=pdf.worker.js.map
+/**
  * @licstart The following is the entire license notice for the
  * Javascript code in this page
  *
@@ -66418,7 +66419,8 @@ exports.NetworkManager = NetworkManager;
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=pdf.js.map/** MIT License
+//# sourceMappingURL=pdf.js.map
+/** MIT License
 * 
 * Copyright (c) 2018 Ludovic CLUBER 
 * 
