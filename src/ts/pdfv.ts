@@ -7,15 +7,18 @@ let pdfjsLib: PDFJSStatic = require("pdfjs-dist");
 
 export class Viewer {
 
-  static display( documentPath: string, canvasId: string ): void {
+  static display( documentPath: string, canvasId: string, pageNumber: number ): void {
     pdfjsLib.getDocument(documentPath).then(function (pdf: PDFDocumentProxy ) {
       Logger.info('PDF loaded');
-      // Fetch the first page
-      let pageNumber = 1;
+      // Fetch the page
+      // if (pageNumber > pdf.numPages){
+      //   Logger.error('Trying to render page ' + pageNumber + ' on a document containing ' + pdf.numPages + ' pages');
+      // }
+      //let pageNumber = pdf.numPages;
       pdf.getPage(pageNumber).then(function(page) {
         Logger.info('Page loaded');
         // you can now use *page* here
-        let scale = 1.0;
+        let scale = 1.5;
         let viewport = page.getViewport(scale);
         let canvas = document.getElementById(canvasId) as HTMLCanvasElement;
         canvas.height = viewport.height;
@@ -38,4 +41,3 @@ export class Viewer {
   }
 
 }
-

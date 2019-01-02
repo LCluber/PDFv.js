@@ -23,5 +23,5 @@
 * http://pdfvjs.lcluber.com
 */
 export declare class Viewer {
-    static display(documentPath: string, canvasId: string): void;
+    static display(documentPath: string, canvasId: string, pageNumber: number): void;
 }

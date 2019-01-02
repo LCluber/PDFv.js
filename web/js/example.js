@@ -1,2 +1,2 @@
 
-PDFv.Viewer.display('./pdf/test.pdf', 'myCanvas');
+PDFv.Viewer.display('./pdf/test.pdf', 'myCanvas', 1);

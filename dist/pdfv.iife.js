@@ -66618,13 +66618,12 @@ var PDFv = (function (exports) {
   function () {
     function Viewer() {}
 
-    Viewer.display = function display(documentPath, canvasId) {
+    Viewer.display = function display(documentPath, canvasId, pageNumber) {
       pdfjsLib.getDocument(documentPath).then(function (pdf) {
         Logger.info('PDF loaded');
-        var pageNumber = 1;
         pdf.getPage(pageNumber).then(function (page) {
           Logger.info('Page loaded');
-          var scale = 1.0;
+          var scale = 1.5;
           var viewport = page.getViewport(scale);
           var canvas = document.getElementById(canvasId);
           canvas.height = viewport.height;

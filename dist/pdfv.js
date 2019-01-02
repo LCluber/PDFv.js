@@ -27,13 +27,12 @@ import { Logger } from '@lcluber/mouettejs';
 
 
 class Viewer {
-    static display(documentPath, canvasId) {
+    static display(documentPath, canvasId, pageNumber) {
         pdfjsLib.getDocument(documentPath).then(function (pdf) {
             Logger.info('PDF loaded');
-            let pageNumber = 1;
             pdf.getPage(pageNumber).then(function (page) {
                 Logger.info('Page loaded');
-                let scale = 1.0;
+                let scale = 1.5;
                 let viewport = page.getViewport(scale);
                 let canvas = document.getElementById(canvasId);
                 canvas.height = viewport.height;
