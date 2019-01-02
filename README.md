@@ -26,7 +26,7 @@ Or download it **[here](http://pdfvjs.lcluber.com/#download)**.
 ```javascript
 import { Viewer } from '@lcluber/pdfvjs';
 
-Viewer.display('./path/document.pdf', 'pdfViewer');
+Viewer.display('./path/document.pdf', 'pdfViewer', 1);
 ```
 
 ### IIFE
@@ -38,7 +38,7 @@ Viewer.display('./path/document.pdf', 'pdfViewer');
 ```
 
 ```javascript
-PDFv.Viewer.display('./path/document.pdf', 'pdfViewer');
+PDFv.Viewer.display('./path/document.pdf', 'pdfViewer', 1);
 ```
 
 ## Demo

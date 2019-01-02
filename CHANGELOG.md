@@ -1,3 +1,6 @@
+Version 0.2.1 (January 03rd 2019)
+-----------------------------
+ * Fixed README.md usage example
 
 Version 0.2.0 (January 02nd 2019)
 -----------------------------

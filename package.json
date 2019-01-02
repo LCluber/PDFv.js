@@ -1,6 +1,6 @@
 {
   "name": "@lcluber/pdfvjs",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "PDF viewer written in Typescript",
   "keywords": ["pdf","pdf viewer", "pdfjs", "pdf document" ],
   "homepage": "http://pdfvjs.lcluber.com",
