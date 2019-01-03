@@ -17,7 +17,7 @@ Or download it **[here](http://pdfvjs.lcluber.com/#download)**.
 
 ### ES6
 
-*Include node-modules/@lcluber/pdfvjs/dist/pdf.min.js before PDFv.js ES6 module when you create your bundle for the web.*
+*Include 'node-modules/@lcluber/pdfvjs/dist/pdf.min.js' before PDFv.js ES6 module when you create your bundle for the web.*
 
 ```html
 <canvas id="pdfViewer"></canvas>
@@ -29,11 +29,10 @@ import { Viewer } from '@lcluber/pdfvjs';
 Viewer.display('./path/document.pdf', 'pdfViewer', 1);
 ```
 
-### IIFE
+### ES5
 
 ```html
 <script src="node-modules/@lcluber/pdfvjs/dist/pdfv.iife.min.js"></script>
-
 <canvas id="pdfViewer"></canvas>
 ```
 
