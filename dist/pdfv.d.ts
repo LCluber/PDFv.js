@@ -22,8 +22,11 @@
 *
 * http://pdfvjs.lcluber.com
 */
+import { PDFPromise } from 'pdfjs-dist';
 export declare class Viewer {
+    private pdf;
     numPages: number;
     constructor();
-    display(documentPath: string, canvasId: string, pageNumber: number): Promise<string>;
+    getDocument(documentPath: string): PDFPromise<void>;
+    display(canvasId: string, pageNumber: number): boolean;
 }

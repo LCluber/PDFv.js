@@ -30,38 +30,37 @@ class Viewer {
     constructor() {
         this.numPages = 0;
     }
-    display(documentPath, canvasId, pageNumber) {
-        return new Promise((resolve, reject) => {
-            var _this = this;
-            pdfjsLib.getDocument(documentPath).then(function (pdf) {
-                Logger.info('PDF loaded');
-                _this.numPages = pdf.numPages;
-                if (pageNumber > pdf.numPages) {
-                    Logger.error('Trying to render page ' + pageNumber + ' on a document containing ' + pdf.numPages + ' pages');
-                }
-                else {
-                    pdf.getPage(pageNumber).then(function (page) {
-                        Logger.info('Page loaded');
-                        let scale = 1.5;
-                        let viewport = page.getViewport(scale);
-                        let canvas = document.getElementById(canvasId);
-                        canvas.height = viewport.height;
-                        canvas.width = viewport.width;
-                        let renderContext = {
-                            canvasContext: canvas.getContext('2d'),
-                            viewport: viewport
-                        };
-                        let renderTask = page.render(renderContext);
-                        renderTask.then(function () {
-                            Logger.info('Page rendered');
-                            resolve();
-                        });
-                    });
-                }
-            }, function (error) {
-                Logger.error(error);
-                reject();
+    getDocument(documentPath) {
+        var _this = this;
+        return pdfjsLib.getDocument(documentPath).then(function (pdf) {
+            Logger.info('PDF loaded');
+            _this.pdf = pdf;
+            _this.numPages = pdf.numPages;
+        }, function (error) {
+            Logger.error(error);
+        });
+    }
+    display(canvasId, pageNumber) {
+        if (pageNumber > this.numPages) {
+            Logger.error('Trying to render page ' + pageNumber + ' on a document containing ' + this.numPages + ' pages');
+            return false;
+        }
+        this.pdf.getPage(pageNumber).then(function (page) {
+            Logger.info('Page loaded');
+            let scale = 1.5;
+            let viewport = page.getViewport(scale);
+            let canvas = document.getElementById(canvasId);
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            let renderContext = {
+                canvasContext: canvas.getContext('2d'),
+                viewport: viewport
+            };
+            let renderTask = page.render(renderContext);
+            renderTask.then(function () {
+                Logger.info('Page rendered');
             });
+            return true;
         });
     }
 }

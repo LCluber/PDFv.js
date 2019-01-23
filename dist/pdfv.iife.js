@@ -66622,40 +66622,40 @@ var PDFv = (function (exports) {
 
     var _proto = Viewer.prototype;
 
-    _proto.display = function display(documentPath, canvasId, pageNumber) {
-      var _this2 = this;
+    _proto.getDocument = function getDocument(documentPath) {
+      var _this = this;
 
-      return new Promise(function (resolve, reject) {
-        var _this = _this2;
-        pdfjsLib.getDocument(documentPath).then(function (pdf) {
-          Logger.info('PDF loaded');
-          _this.numPages = pdf.numPages;
+      return pdfjsLib.getDocument(documentPath).then(function (pdf) {
+        Logger.info('PDF loaded');
+        _this.pdf = pdf;
+        _this.numPages = pdf.numPages;
+      }, function (error) {
+        Logger.error(error);
+      });
+    };
 
-          if (pageNumber > pdf.numPages) {
-            Logger.error('Trying to render page ' + pageNumber + ' on a document containing ' + pdf.numPages + ' pages');
-          } else {
-            pdf.getPage(pageNumber).then(function (page) {
-              Logger.info('Page loaded');
-              var scale = 1.5;
-              var viewport = page.getViewport(scale);
-              var canvas = document.getElementById(canvasId);
-              canvas.height = viewport.height;
-              canvas.width = viewport.width;
-              var renderContext = {
-                canvasContext: canvas.getContext('2d'),
-                viewport: viewport
-              };
-              var renderTask = page.render(renderContext);
-              renderTask.then(function () {
-                Logger.info('Page rendered');
-                resolve();
-              });
-            });
-          }
-        }, function (error) {
-          Logger.error(error);
-          reject();
+    _proto.display = function display(canvasId, pageNumber) {
+      if (pageNumber > this.numPages) {
+        Logger.error('Trying to render page ' + pageNumber + ' on a document containing ' + this.numPages + ' pages');
+        return false;
+      }
+
+      this.pdf.getPage(pageNumber).then(function (page) {
+        Logger.info('Page loaded');
+        var scale = 1.5;
+        var viewport = page.getViewport(scale);
+        var canvas = document.getElementById(canvasId);
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        var renderContext = {
+          canvasContext: canvas.getContext('2d'),
+          viewport: viewport
+        };
+        var renderTask = page.render(renderContext);
+        renderTask.then(function () {
+          Logger.info('Page rendered');
         });
+        return true;
       });
     };
 

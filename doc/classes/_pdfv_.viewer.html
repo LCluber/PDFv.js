@@ -91,12 +91,14 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_pdfv_.viewer.html#numpages" class="tsd-kind-icon">num<wbr>Pages</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_pdfv_.viewer.html#pdf" class="tsd-kind-icon">pdf</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_pdfv_.viewer.html#display" class="tsd-kind-icon">display</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_pdfv_.viewer.html#getdocument" class="tsd-kind-icon">get<wbr>Document</a></li>
 							</ul>
 						</section>
 					</div>
@@ -114,7 +116,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/LCluber/PDFv.js/blob/5b57f28/src/ts/pdfv.ts#L12">pdfv.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/LCluber/PDFv.js/blob/5940124/src/ts/pdfv.ts#L12">pdfv.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="_pdfv_.viewer.html" class="tsd-signature-type">Viewer</a></h4>
@@ -130,7 +132,17 @@
 					<div class="tsd-signature tsd-kind-icon">num<wbr>Pages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/LCluber/PDFv.js/blob/5b57f28/src/ts/pdfv.ts#L12">pdfv.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/LCluber/PDFv.js/blob/5940124/src/ts/pdfv.ts#L12">pdfv.ts:12</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="pdf" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> pdf</h3>
+					<div class="tsd-signature tsd-kind-icon">pdf<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PDFDocumentProxy</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/LCluber/PDFv.js/blob/5940124/src/ts/pdfv.ts#L11">pdfv.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -141,20 +153,17 @@
 					<a name="display" class="tsd-anchor"></a>
 					<h3>display</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">display<span class="tsd-signature-symbol">(</span>documentPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, canvasId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, pageNumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">display<span class="tsd-signature-symbol">(</span>canvasId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, pageNumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/LCluber/PDFv.js/blob/5b57f28/src/ts/pdfv.ts#L18">pdfv.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/LCluber/PDFv.js/blob/5940124/src/ts/pdfv.ts#L33">pdfv.ts:33</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
-								<li>
-									<h5>documentPath: <span class="tsd-signature-type">string</span></h5>
-								</li>
 								<li>
 									<h5>canvasId: <span class="tsd-signature-type">string</span></h5>
 								</li>
@@ -162,7 +171,30 @@
 									<h5>pageNumber: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getdocument" class="tsd-anchor"></a>
+					<h3>get<wbr>Document</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Document<span class="tsd-signature-symbol">(</span>documentPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PDFPromise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/LCluber/PDFv.js/blob/5940124/src/ts/pdfv.ts#L18">pdfv.ts:18</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>documentPath: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">PDFPromise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -192,8 +224,14 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_pdfv_.viewer.html#numpages" class="tsd-kind-icon">num<wbr>Pages</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_pdfv_.viewer.html#pdf" class="tsd-kind-icon">pdf</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_pdfv_.viewer.html#display" class="tsd-kind-icon">display</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_pdfv_.viewer.html#getdocument" class="tsd-kind-icon">get<wbr>Document</a>
 							</li>
 						</ul>
 					</li>
