@@ -69,25 +69,19 @@
 				<h2 id="motivation">Motivation</h2>
 				<p>The goal of this library is to provide an easy way to display pdf documents in the browser.</p>
 				<h2 id="installation">Installation</h2>
-				<pre><code class="lang-bash">$ npm install @lcluber/pdfvjs
-</code></pre>
+				<pre><code class="language-bash">$ npm install @lcluber/pdfvjs</code></pre>
 				<p>Or download it <strong><a href="http://pdfvjs.lcluber.com/#download">here</a></strong>.</p>
 				<h2 id="usage">Usage</h2>
 				<h3 id="es6">ES6</h3>
-				<p><em>Include node-modules/@lcluber/pdfvjs/dist/pdf.min.js before PDFv.js ES6 module when you create your bundle for the web.</em></p>
-				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pdfViewer"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
-</code></pre>
-				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { Viewer } <span class="hljs-keyword">from</span> <span class="hljs-string">'@lcluber/pdfvjs'</span>;
+				<p><em>Include &#39;node-modules/@lcluber/pdfvjs/dist/pdf.min.js&#39; before PDFv.js ES6 module when you create your bundle for the web.</em></p>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pdfViewer"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span></code></pre>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { Viewer } <span class="hljs-keyword">from</span> <span class="hljs-string">'@lcluber/pdfvjs'</span>;
 
-Viewer.display(<span class="hljs-string">'./path/document.pdf'</span>, <span class="hljs-string">'pdfViewer'</span>);
-</code></pre>
-				<h3 id="iife">IIFE</h3>
-				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"node-modules/@lcluber/pdfvjs/dist/pdfv.iife.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pdfViewer"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
-</code></pre>
-				<pre><code class="lang-javascript">PDFv.Viewer.display(<span class="hljs-string">'./path/document.pdf'</span>, <span class="hljs-string">'pdfViewer'</span>);
-</code></pre>
+Viewer.display(<span class="hljs-string">'./path/document.pdf'</span>, <span class="hljs-string">'pdfViewer'</span>, <span class="hljs-number">1</span>);</code></pre>
+				<h3 id="es5">ES5</h3>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"node-modules/@lcluber/pdfvjs/dist/pdfv.iife.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pdfViewer"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span></code></pre>
+				<pre><code class="language-javascript">PDFv.Viewer.display(<span class="hljs-string">'./path/document.pdf'</span>, <span class="hljs-string">'pdfViewer'</span>, <span class="hljs-number">1</span>);</code></pre>
 				<h2 id="demo">Demo</h2>
 				<p>See a basic example <strong><a href="http://pdfvjs.lcluber.com/#example">here</a></strong>.</p>
 				<h2 id="api-reference">API Reference</h2>

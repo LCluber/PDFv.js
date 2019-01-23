@@ -2,7 +2,12 @@
   "name": "@lcluber/pdfvjs",
   "version": "0.2.1",
   "description": "PDF viewer written in Typescript",
-  "keywords": ["pdf","pdf viewer", "pdfjs", "pdf document" ],
+  "keywords": [
+    "pdf",
+    "pdf viewer",
+    "pdfjs",
+    "pdf document"
+  ],
   "homepage": "http://pdfvjs.lcluber.com",
   "main": "dist/pdfv",
   "types": "dist/pdfv",
@@ -74,7 +79,7 @@
     "rollup-plugin-node-resolve": "4.0.0",
     "time-grunt": "1.4.0",
     "tslint": "5.9.1",
-    "typedoc": "0.11.1",
-    "typescript": "2.9.2"
+    "typedoc": "0.13.0",
+    "typescript": "3.2.2"
   }
 }

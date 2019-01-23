@@ -23,5 +23,7 @@
 * http://pdfvjs.lcluber.com
 */
 export declare class Viewer {
-    static display(documentPath: string, canvasId: string, pageNumber: number): void;
+    numPages: number;
+    constructor();
+    display(documentPath: string, canvasId: string, pageNumber: number): Promise<string>;
 }

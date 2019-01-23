@@ -27,27 +27,36 @@ import { Logger } from '@lcluber/mouettejs';
 
 
 class Viewer {
-    static display(documentPath, canvasId, pageNumber) {
-        pdfjsLib.getDocument(documentPath).then(function (pdf) {
-            Logger.info('PDF loaded');
-            pdf.getPage(pageNumber).then(function (page) {
-                Logger.info('Page loaded');
-                let scale = 1.5;
-                let viewport = page.getViewport(scale);
-                let canvas = document.getElementById(canvasId);
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-                let renderContext = {
-                    canvasContext: canvas.getContext('2d'),
-                    viewport: viewport
-                };
-                let renderTask = page.render(renderContext);
-                renderTask.then(function () {
-                    Logger.info('Page rendered');
+    constructor() {
+        this.numPages = 0;
+    }
+    display(documentPath, canvasId, pageNumber) {
+        return new Promise((resolve, reject) => {
+            var _this = this;
+            pdfjsLib.getDocument(documentPath).then(function (pdf) {
+                Logger.info('PDF loaded');
+                _this.numPages = pdf.numPages;
+                pdf.getPage(pageNumber).then(function (page) {
+                    Logger.info('Page loaded');
+                    let scale = 1.5;
+                    let viewport = page.getViewport(scale);
+                    let canvas = document.getElementById(canvasId);
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    let renderContext = {
+                        canvasContext: canvas.getContext('2d'),
+                        viewport: viewport
+                    };
+                    let renderTask = page.render(renderContext);
+                    renderTask.then(function () {
+                        Logger.info('Page rendered');
+                        resolve();
+                    });
                 });
+            }, function (error) {
+                Logger.error(error);
+                reject();
             });
-        }, function (error) {
-            Logger.error(error);
         });
     }
 }
