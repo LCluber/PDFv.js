@@ -25,7 +25,13 @@
     "email": "http://www.lcluber.com/contact",
     "url": "http://www.lcluber.com"
   },
-  "contributors": [],
+  "contributors": [
+    {
+      "name": "Reda Khouirate",
+      "email": "",
+      "url": "https://github.com/khouirate"
+    }
+  ],
   "scripts": {
     "start": "node ./bin/www"
   },
