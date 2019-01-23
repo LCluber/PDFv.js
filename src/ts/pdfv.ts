@@ -17,7 +17,7 @@ export class Viewer {
 
   public getDocument( documentPath: string ): PDFPromise<void> {
     // return new Promise((resolve: Function, reject: Function) => {
-      var _this = this;
+      let _this = this;
       return pdfjsLib.getDocument(documentPath).then(function (pdf: PDFDocumentProxy ) {
         Logger.info('PDF loaded');
         _this.pdf = pdf;

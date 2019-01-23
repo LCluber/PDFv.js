@@ -31,7 +31,7 @@ class Viewer {
         this.numPages = 0;
     }
     getDocument(documentPath) {
-        var _this = this;
+        let _this = this;
         return pdfjsLib.getDocument(documentPath).then(function (pdf) {
             Logger.info('PDF loaded');
             _this.pdf = pdf;
