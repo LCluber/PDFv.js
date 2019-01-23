@@ -26,7 +26,7 @@ Or download it **[here](http://pdfvjs.lcluber.com/#download)**.
 ```javascript
 import { Viewer } from '@lcluber/pdfvjs';
 
-var viewer = new Viewer();
+let viewer = new Viewer();
 viewer.getDocument('./pdf/test.pdf').then(()=> {
   viewer.display('pdfViewer', viewer.numPages);// render the last page of the document
 });
