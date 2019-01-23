@@ -1,3 +1,8 @@
+Version 0.3.0 (January 23rd 2019)
+-----------------------------
+ * display() method now returns a promise. Giving the ability to write code after rendering is done.
+ * Added numPages parameter.
+
 Version 0.2.1 (January 03rd 2019)
 -----------------------------
  * Fixed README.md usage example

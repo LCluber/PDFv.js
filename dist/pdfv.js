@@ -36,23 +36,28 @@ class Viewer {
             pdfjsLib.getDocument(documentPath).then(function (pdf) {
                 Logger.info('PDF loaded');
                 _this.numPages = pdf.numPages;
-                pdf.getPage(pageNumber).then(function (page) {
-                    Logger.info('Page loaded');
-                    let scale = 1.5;
-                    let viewport = page.getViewport(scale);
-                    let canvas = document.getElementById(canvasId);
-                    canvas.height = viewport.height;
-                    canvas.width = viewport.width;
-                    let renderContext = {
-                        canvasContext: canvas.getContext('2d'),
-                        viewport: viewport
-                    };
-                    let renderTask = page.render(renderContext);
-                    renderTask.then(function () {
-                        Logger.info('Page rendered');
-                        resolve();
+                if (pageNumber > pdf.numPages) {
+                    Logger.error('Trying to render page ' + pageNumber + ' on a document containing ' + pdf.numPages + ' pages');
+                }
+                else {
+                    pdf.getPage(pageNumber).then(function (page) {
+                        Logger.info('Page loaded');
+                        let scale = 1.5;
+                        let viewport = page.getViewport(scale);
+                        let canvas = document.getElementById(canvasId);
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        let renderContext = {
+                            canvasContext: canvas.getContext('2d'),
+                            viewport: viewport
+                        };
+                        let renderTask = page.render(renderContext);
+                        renderTask.then(function () {
+                            Logger.info('Page rendered');
+                            resolve();
+                        });
                     });
-                });
+                }
             }, function (error) {
                 Logger.error(error);
                 reject();

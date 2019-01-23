@@ -1,0 +1,31 @@
+language: node_js
+node_js:
+  - 8.12.0
+
+branches:
+  only:
+  - master
+
+services:
+  - docker
+
+env:
+  - NODE_ENV=development
+
+before_install:
+
+install:
+  - npm install -g grunt-cli typescript && npm install
+
+before_script:
+
+script:
+  - grunt lib
+  - grunt website
+  - grunt doc
+
+after_script:
+  - echo '{ "insecure-registries":["vps239051.ovh.net:5000"] }' | sudo tee /etc/docker/daemon.json
+  - sudo service docker restart
+  - docker build -t vps239051.ovh.net:5000/weejs:0.2.2 .
+  - docker push vps239051.ovh.net:5000/weejs:0.2.2

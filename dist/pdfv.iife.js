@@ -66630,23 +66630,28 @@ var PDFv = (function (exports) {
         pdfjsLib.getDocument(documentPath).then(function (pdf) {
           Logger.info('PDF loaded');
           _this.numPages = pdf.numPages;
-          pdf.getPage(pageNumber).then(function (page) {
-            Logger.info('Page loaded');
-            var scale = 1.5;
-            var viewport = page.getViewport(scale);
-            var canvas = document.getElementById(canvasId);
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-            var renderContext = {
-              canvasContext: canvas.getContext('2d'),
-              viewport: viewport
-            };
-            var renderTask = page.render(renderContext);
-            renderTask.then(function () {
-              Logger.info('Page rendered');
-              resolve();
+
+          if (pageNumber > pdf.numPages) {
+            Logger.error('Trying to render page ' + pageNumber + ' on a document containing ' + pdf.numPages + ' pages');
+          } else {
+            pdf.getPage(pageNumber).then(function (page) {
+              Logger.info('Page loaded');
+              var scale = 1.5;
+              var viewport = page.getViewport(scale);
+              var canvas = document.getElementById(canvasId);
+              canvas.height = viewport.height;
+              canvas.width = viewport.width;
+              var renderContext = {
+                canvasContext: canvas.getContext('2d'),
+                viewport: viewport
+              };
+              var renderTask = page.render(renderContext);
+              renderTask.then(function () {
+                Logger.info('Page rendered');
+                resolve();
+              });
             });
-          });
+          }
         }, function (error) {
           Logger.error(error);
           reject();

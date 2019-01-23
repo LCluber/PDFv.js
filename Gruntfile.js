@@ -232,7 +232,7 @@ module.exports = function(grunt){
             if_return:true,
             join_vars:true,
             warnings: true,
-            drop_console: true,
+            drop_console: false,
             keep_fargs: false,
             keep_fnames: false
           }
@@ -366,7 +366,7 @@ module.exports = function(grunt){
       options: {
         //import { IBase64Service } from '../services/base64.service';
         // /// <reference path="../config/typings/index.d.ts" />
-        patterns: [ 
+        patterns: [
                     // /import.*';/g,
                     /export { .* } from '.*';/g,
                     // /\/\/\/ <reference path=.*\/>/g
