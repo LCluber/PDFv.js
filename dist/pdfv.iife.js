@@ -66616,29 +66616,41 @@ var PDFv = (function (exports) {
   var Viewer =
   /*#__PURE__*/
   function () {
-    function Viewer() {}
+    function Viewer() {
+      this.numPages = 0;
+    }
 
-    Viewer.display = function display(documentPath, canvasId, pageNumber) {
-      pdfjsLib.getDocument(documentPath).then(function (pdf) {
-        Logger.info('PDF loaded');
-        pdf.getPage(pageNumber).then(function (page) {
-          Logger.info('Page loaded');
-          var scale = 1.5;
-          var viewport = page.getViewport(scale);
-          var canvas = document.getElementById(canvasId);
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
-          var renderContext = {
-            canvasContext: canvas.getContext('2d'),
-            viewport: viewport
-          };
-          var renderTask = page.render(renderContext);
-          renderTask.then(function () {
-            Logger.info('Page rendered');
+    var _proto = Viewer.prototype;
+
+    _proto.display = function display(documentPath, canvasId, pageNumber) {
+      var _this2 = this;
+
+      return new Promise(function (resolve, reject) {
+        var _this = _this2;
+        pdfjsLib.getDocument(documentPath).then(function (pdf) {
+          Logger.info('PDF loaded');
+          _this.numPages = pdf.numPages;
+          pdf.getPage(pageNumber).then(function (page) {
+            Logger.info('Page loaded');
+            var scale = 1.5;
+            var viewport = page.getViewport(scale);
+            var canvas = document.getElementById(canvasId);
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            var renderContext = {
+              canvasContext: canvas.getContext('2d'),
+              viewport: viewport
+            };
+            var renderTask = page.render(renderContext);
+            renderTask.then(function () {
+              Logger.info('Page rendered');
+              resolve();
+            });
           });
+        }, function (error) {
+          Logger.error(error);
+          reject();
         });
-      }, function (error) {
-        Logger.error(error);
       });
     };
 
