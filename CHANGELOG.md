@@ -3,7 +3,7 @@ Version 0.3.0 (January 23rd 2019)
  * Viewer class is not static anymore
  * Split display() method into getDocument() and Display() methods
  * getDocument() method returns a promise. Giving the ability to write code after PDF is loaded
- * Added numPages parameter
+ * Added numPages parameter to the Viewer class
 
 Version 0.2.1 (January 03rd 2019)
 -----------------------------
