@@ -26,7 +26,10 @@ Or download it **[here](http://pdfvjs.lcluber.com/#download)**.
 ```javascript
 import { Viewer } from '@lcluber/pdfvjs';
 
-Viewer.display('./path/document.pdf', 'pdfViewer', 1);
+var viewer = new Viewer();
+viewer.getDocument('./pdf/test.pdf').then(()=> {
+  viewer.display('pdfViewer', viewer.numPages);// render the last page of the document
+});
 ```
 
 ### ES5
@@ -37,7 +40,10 @@ Viewer.display('./path/document.pdf', 'pdfViewer', 1);
 ```
 
 ```javascript
-PDFv.Viewer.display('./path/document.pdf', 'pdfViewer', 1);
+var viewer = new PDFv.Viewer();
+viewer.getDocument('./pdf/test.pdf').then(function() {
+  viewer.display('pdfViewer', viewer.numPages);// render the last page of the document
+});
 ```
 
 ## Demo

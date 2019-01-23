@@ -8,7 +8,7 @@ let pdfjsLib: PDFJSStatic = require("pdfjs-dist");
 
 export class Viewer {
 
-  private pdf: PDFDocumentProxy;
+  public pdf: PDFDocumentProxy;
   public numPages : number;
 
   constructor() {

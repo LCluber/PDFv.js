@@ -77,11 +77,17 @@
 				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pdfViewer"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span></code></pre>
 				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { Viewer } <span class="hljs-keyword">from</span> <span class="hljs-string">'@lcluber/pdfvjs'</span>;
 
-Viewer.display(<span class="hljs-string">'./path/document.pdf'</span>, <span class="hljs-string">'pdfViewer'</span>, <span class="hljs-number">1</span>);</code></pre>
+<span class="hljs-keyword">var</span> viewer = <span class="hljs-keyword">new</span> Viewer();
+viewer.getDocument(<span class="hljs-string">'./pdf/test.pdf'</span>).then(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span> {
+  viewer.display(<span class="hljs-string">'pdfViewer'</span>, viewer.numPages);<span class="hljs-comment">// render the last page of the document</span>
+});</code></pre>
 				<h3 id="es5">ES5</h3>
 				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"node-modules/@lcluber/pdfvjs/dist/pdfv.iife.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pdfViewer"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span></code></pre>
-				<pre><code class="language-javascript">PDFv.Viewer.display(<span class="hljs-string">'./path/document.pdf'</span>, <span class="hljs-string">'pdfViewer'</span>, <span class="hljs-number">1</span>);</code></pre>
+				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> viewer = <span class="hljs-keyword">new</span> PDFv.Viewer();
+viewer.getDocument(<span class="hljs-string">'./pdf/test.pdf'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  viewer.display(<span class="hljs-string">'pdfViewer'</span>, viewer.numPages);<span class="hljs-comment">// render the last page of the document</span>
+});</code></pre>
 				<h2 id="demo">Demo</h2>
 				<p>See a basic example <strong><a href="http://pdfvjs.lcluber.com/#example">here</a></strong>.</p>
 				<h2 id="api-reference">API Reference</h2>

@@ -22,9 +22,9 @@
 *
 * http://pdfvjs.lcluber.com
 */
-import { PDFPromise } from 'pdfjs-dist';
+import { PDFDocumentProxy, PDFPromise } from 'pdfjs-dist';
 export declare class Viewer {
-    private pdf;
+    pdf: PDFDocumentProxy;
     numPages: number;
     constructor();
     getDocument(documentPath: string): PDFPromise<void>;
