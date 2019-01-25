@@ -25,7 +25,3 @@ script:
   - grunt doc
 
 after_script:
-  - echo '{ "insecure-registries":["vps239051.ovh.net:5000"] }' | sudo tee /etc/docker/daemon.json
-  - sudo service docker restart
-  - docker build -t vps239051.ovh.net:5000/pdfvjs:0.3.0 .
-  - docker push vps239051.ovh.net:5000/pdfvjs:0.3.0
