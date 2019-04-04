@@ -66617,6 +66617,7 @@ var PDFv = (function (exports) {
   /*#__PURE__*/
   function () {
     function Viewer() {
+      this.pdf = null;
       this.numPages = 0;
     }
 
@@ -66635,27 +66636,35 @@ var PDFv = (function (exports) {
     };
 
     _proto.display = function display(canvasId, pageNumber) {
-      if (pageNumber > this.numPages) {
-        Logger.error('Trying to render page ' + pageNumber + ' on a document containing ' + this.numPages + ' pages');
-        return false;
-      }
+      var _this2 = this;
 
-      this.pdf.getPage(pageNumber).then(function (page) {
-        Logger.info('Page loaded');
-        var scale = 1.5;
-        var viewport = page.getViewport(scale);
-        var canvas = document.getElementById(canvasId);
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-        var renderContext = {
-          canvasContext: canvas.getContext('2d'),
-          viewport: viewport
-        };
-        var renderTask = page.render(renderContext);
-        renderTask.then(function () {
-          Logger.info('Page rendered');
-        });
-        return true;
+      return new Promise(function (resolve, reject) {
+        if (pageNumber > _this2.numPages) {
+          Logger.error('Trying to render page ' + pageNumber + ' on a document containing ' + _this2.numPages + ' pages');
+          reject();
+        }
+
+        if (_this2.pdf) {
+          _this2.pdf.getPage(pageNumber).then(function (page) {
+            Logger.info('Page loaded');
+            var scale = 1.5;
+            var viewport = page.getViewport(scale);
+            var canvas = document.getElementById(canvasId);
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            var renderContext = {
+              canvasContext: canvas.getContext('2d'),
+              viewport: viewport
+            };
+            var renderTask = page.render(renderContext);
+            renderTask.then(function () {
+              Logger.info('Page rendered');
+              resolve();
+            });
+          });
+        } else {
+          reject();
+        }
       });
     };
 

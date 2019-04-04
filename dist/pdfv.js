@@ -28,6 +28,7 @@ import { Logger } from '@lcluber/mouettejs';
 
 class Viewer {
     constructor() {
+        this.pdf = null;
         this.numPages = 0;
     }
     getDocument(documentPath) {
@@ -41,26 +42,33 @@ class Viewer {
         });
     }
     display(canvasId, pageNumber) {
-        if (pageNumber > this.numPages) {
-            Logger.error('Trying to render page ' + pageNumber + ' on a document containing ' + this.numPages + ' pages');
-            return false;
-        }
-        this.pdf.getPage(pageNumber).then(function (page) {
-            Logger.info('Page loaded');
-            let scale = 1.5;
-            let viewport = page.getViewport(scale);
-            let canvas = document.getElementById(canvasId);
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-            let renderContext = {
-                canvasContext: canvas.getContext('2d'),
-                viewport: viewport
-            };
-            let renderTask = page.render(renderContext);
-            renderTask.then(function () {
-                Logger.info('Page rendered');
-            });
-            return true;
+        return new Promise((resolve, reject) => {
+            if (pageNumber > this.numPages) {
+                Logger.error('Trying to render page ' + pageNumber + ' on a document containing ' + this.numPages + ' pages');
+                reject();
+            }
+            if (this.pdf) {
+                this.pdf.getPage(pageNumber).then(function (page) {
+                    Logger.info('Page loaded');
+                    let scale = 1.5;
+                    let viewport = page.getViewport(scale);
+                    let canvas = document.getElementById(canvasId);
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    let renderContext = {
+                        canvasContext: canvas.getContext('2d'),
+                        viewport: viewport
+                    };
+                    let renderTask = page.render(renderContext);
+                    renderTask.then(function () {
+                        Logger.info('Page rendered');
+                        resolve();
+                    });
+                });
+            }
+            else {
+                reject();
+            }
         });
     }
 }

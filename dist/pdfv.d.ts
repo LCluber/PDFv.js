@@ -24,9 +24,9 @@
 */
 import { PDFDocumentProxy, PDFPromise } from 'pdfjs-dist';
 export declare class Viewer {
-    pdf: PDFDocumentProxy;
+    pdf: PDFDocumentProxy | null;
     numPages: number;
     constructor();
     getDocument(documentPath: string): PDFPromise<void>;
-    display(canvasId: string, pageNumber: number): boolean;
+    display(canvasId: string, pageNumber: number): Promise<string>;
 }
