@@ -1,1 +1,0 @@
-src\ts\pdfv.ts --sourcemap --declaration --removeComments --noImplicitAny --preserveConstEnums --suppressImplicitAnyIndexErrors --moduleResolution node --rootDir src/ts/ --allowSyntheticDefaultImports --declarationDir src\ts\build\es6 --target ES6 --module es6 --outDir src/ts/build/es6/

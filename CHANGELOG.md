@@ -1,3 +1,7 @@
+Version 0.3.1 (April 05th 2019)
+-----------------------------
+ * display() method now returns a promise
+
 Version 0.3.0 (January 23rd 2019)
 -----------------------------
  * Viewer class is not static anymore
